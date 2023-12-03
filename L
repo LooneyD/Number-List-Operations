@@ -1,0 +1,69 @@
+def calculate_average(numbers):
+    """
+    Calculates the average of a list of numbers.
+
+    Args:
+        numbers (list): List of numbers.
+
+    Returns:
+        float: Average of the numbers.
+
+    Raises:
+        ValueError: If the list is empty or contains non-numeric values.
+    """
+    try:
+        total = sum(numbers)
+        average = total / len(numbers)
+        return average
+    except ZeroDivisionError:
+        raise ValueError("Cannot calculate average of an empty list.")
+    except TypeError:
+        raise ValueError("Cannot calculate average of non-numeric values.")
+
+
+def update_list(numbers):
+    """
+    Adds numbers to the list.
+
+    Args:
+        numbers (list): List to add numbers to.
+    """
+    try:
+        num = int(input("Enter a number to add to the list (or 0 to stop): "))
+        while num != 0:
+            numbers.append(num)
+            num = int(input("Enter a number to add to the list (or 0 to stop): "))
+    except ValueError:
+        print("Error: Invalid input. Only numeric values are allowed.")
+
+
+def print_list(numbers):
+    """
+    Prints the contents of the list.
+
+    Args:
+        numbers (list): List to print.
+    """
+    if len(numbers) == 0:
+        print("The list is empty.")
+    else:
+        print("The list contains:", numbers)
+
+
+def main():
+    """
+    Main function of the program.
+    """
+    num_list = [5, 10, 15, 20, 25]
+    print_list(num_list)
+    update_list(num_list)
+    print_list(num_list)
+    try:
+        result = calculate_average(num_list)
+        print("The average is:", result)
+    except ValueError as e:
+        print("Error:", str(e))
+
+
+if __name__ == "__main__":
+    main()
